@@ -1,0 +1,27 @@
+﻿@model List<Product>
+
+   @*  1.select the model & the way to recieve the data  *@
+<div class="container">
+    <div class="row">
+
+@*         2. dynamic data (rendering) - same name as model aka table 
+ *@
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="@item.ImageUrl" class="card-img-top" />
+                    <div class="card-body">
+                        <h5>@item.Name</h5>
+                        <p>@item.Description</p>
+
+
+
+                    
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

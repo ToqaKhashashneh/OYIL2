@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Category>
+
+<h1>Categories</h1>
+
+<a asp-action="Create">Add New Category</a>
+
+@* <table border="1"> *@
+@*     <tr> *@
+@*         <th>Name</th> *@
+@*         <th>Description</th> *@
+@*     </tr> *@
+
+@*     @foreach (var item in Model) *@
+@*     { *@
+@*         <tr> *@
+@*             <td>@item.CategoryId</td> *@
+@*             <td>@item.Name</td> *@
+@*             <td>@item.Description</td> *@
+@*         </tr> *@
+@*     } *@
+@* </table> *@
+
+
+@* <div class="card" style="width: 18rem;"> *@
+@*     @foreach (var item in Model) *@
+@*     { *@
+@*         <img class="card-img-top" src="@item.ImageUrl" alt="Card image cap"> *@
+@*         <div class="card-body"> *@
+@*             <h5 class="card-title">@item.Name</h5> *@
+@*             <p class="card-text">@item.Description</p> *@
+@*             <a href="#" class="btn btn-primary">View All Products</a> *@
+@*         </div> *@
+@*     } *@
+@* </div> *@
+
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="@item.ImageUrl" class="card-img-top" />
+                    <div class="card-body">
+                        <h5>@item.Name</h5>
+                        <p>@item.Description</p>
+
+
+                        <a asp-action="ProductsByCategory"
+                           asp-route-id="@item.CategoryId" class="btn btn-primary btn-sm">View All Products</a>
+
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning btn-sm me-2">   Edit </a>
+
+                        <a asp-action="Delete" asp-route-CategoryId="@item.CategoryId" class="btn btn-danger btn-sm">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
