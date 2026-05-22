@@ -1,0 +1,40 @@
+﻿@model Employment.Models.Employee
+
+@* requirments for uploading file in view :
+->  enctype="multipart/form-data" in start tag of the form to allow file upload
+  -> input type for image : file
+ *@
+<h2>Add Employee</h2>
+<form asp-action="Create" enctype="multipart/form-data" method="post">
+
+	@* <input type="hidden" name="ManagerId" value="@ViewBag.ManagerId" /> *@
+    <input type="hidden" asp-for="MangerId" />
+
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" asp-for="Name" class="form-control" required />
+		<span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" asp-for="Email" class="form-control" required />
+		<span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" asp-for="Password" class="form-control" required />
+		<span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" name="ImageFile" class="form-control" />
+
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

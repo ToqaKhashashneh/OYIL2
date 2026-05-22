@@ -1,0 +1,17 @@
+﻿<h2>Managers</h2>
+<div class="row">
+    @foreach (var manager in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@manager.Name</h5>
+                    <a href="@Url.Action("Employees", "Manager", new { managerId = manager.Id })" class="btn btn-primary">Show All Employees</a>
+                    <a href="@Url.Action("Create", "Employee", new { managerId = manager.Id })" class="btn btn-success">Add New Employee</a>
+                    <a href="@Url.Action("Create", "Task", new { managerId  = manager.Id })" class="btn btn-warning">Assign Task</a>
+                   
+                </div>
+            </div>
+        </div>
+    }
+</div>
